@@ -1,0 +1,16 @@
+
+services:
+  frontend:
+    build: ./
+  nginx:
+    build: ./nginx
+    depends_on:
+      - frontend
+    restart: always
+    ports:
+      - "7777:80"
+    volumes:
+      - "/d/LEARN_DEVOPS/Techmaster/SouceCode/tictac/public:/var/www/html"
+      - "nginxdata:/var/www/abd"
+volumes:
+  nginxdata:
